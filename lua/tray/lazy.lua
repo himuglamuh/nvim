@@ -17,7 +17,7 @@ require("lazy").setup({
         dependencies = { 'nvim-lua/plenary.nvim' }
     },
     {
-        'rose-pine/neovim', name = 'rose-pine'
+        'rose-pine/neovim'
     },
     {
         'nvim-treesitter/nvim-treesitter'
