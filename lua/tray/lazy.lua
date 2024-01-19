@@ -32,7 +32,7 @@ require("lazy").setup({
             "neovim/nvim-lspconfig",
             "hrsh7th/nvim-cmp",
             "hrsh7th/cmp-nvim-lsp",
-            "L3MON4D3/LuaSnip"
+            "L3MON4D3/LuaSnip",
         },
         config = function()
             require("mason").setup()

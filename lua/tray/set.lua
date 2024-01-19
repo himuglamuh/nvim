@@ -16,5 +16,4 @@ vim.opt.termguicolors = true
 vim.opt.scrolloff = 10
 vim.opt.signcolumn = "yes"
 vim.opt.updatetime = 50
-vim.cmd.colorscheme = "rose-pine"
 vim.opt.showmatch = true
