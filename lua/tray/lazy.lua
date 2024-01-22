@@ -39,4 +39,9 @@ require("lazy").setup({
             require("mason-lspconfig").setup()
         end
     },
+    {
+        'neoclide/coc.nvim',
+    	branch = "master",
+        event = "VimEnter",
+    }
 }, {})

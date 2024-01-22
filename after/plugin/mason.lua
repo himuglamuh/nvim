@@ -73,4 +73,3 @@ require('mason-lspconfig').setup({
     end
   }
 })
-
