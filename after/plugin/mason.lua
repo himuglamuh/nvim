@@ -28,7 +28,7 @@ vim.api.nvim_create_autocmd('LspAttach', {
       vim.keymap.set(mode, lhs, rhs, {buffer = true})
     end
 
-    bufmap('n', 'K', '<cmd>lua vim.lsp.buf.hover()<cr>')
+    bufmap('n', '<leader>k', '<cmd>lua vim.lsp.buf.hover()<cr>')
     bufmap('n', 'gd', '<cmd>lua vim.lsp.buf.definition()<cr>')
     bufmap('n', 'gD', '<cmd>lua vim.lsp.buf.declaration()<cr>')
     bufmap('n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<cr>')
@@ -53,7 +53,9 @@ require('mason-lspconfig').setup({
     'tsserver',
     'eslint',
     'html',
-    'cssls'
+    'cssls',
+    'omnisharp',
+    'powershell_es'
   },
   handlers = {
     function(server)
