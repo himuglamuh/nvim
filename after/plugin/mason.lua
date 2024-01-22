@@ -24,23 +24,23 @@ vim.api.nvim_create_autocmd('LspAttach', {
   group = lsp_cmds,
   desc = 'LSP actions',
   callback = function()
-    local bufmap = function(mode, lhs, rhs)
-      vim.keymap.set(mode, lhs, rhs, {buffer = true})
+    local bufmap = function(mode, lhs, rhs, des)
+      vim.keymap.set(mode, lhs, rhs, {buffer = true, desc=des})
     end
 
-    bufmap('n', '<leader>k', '<cmd>lua vim.lsp.buf.hover()<cr>')
-    bufmap('n', 'gd', '<cmd>lua vim.lsp.buf.definition()<cr>')
-    bufmap('n', 'gD', '<cmd>lua vim.lsp.buf.declaration()<cr>')
-    bufmap('n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<cr>')
-    bufmap('n', 'go', '<cmd>lua vim.lsp.buf.type_definition()<cr>')
-    bufmap('n', 'gr', '<cmd>lua vim.lsp.buf.references()<cr>')
-    bufmap('n', 'gs', '<cmd>lua vim.lsp.buf.signature_help()<cr>')
-    bufmap('n', '<F2>', '<cmd>lua vim.lsp.buf.rename()<cr>')
-    bufmap({'n', 'x'}, '<F3>', '<cmd>lua vim.lsp.buf.format({async = true})<cr>')
-    bufmap('n', '<F4>', '<cmd>lua vim.lsp.buf.code_action()<cr>')
-    bufmap('n', 'gl', '<cmd>lua vim.diagnostic.open_float()<cr>')
-    bufmap('n', '[d', '<cmd>lua vim.diagnostic.goto_prev()<cr>')
-    bufmap('n', ']d', '<cmd>lua vim.diagnostic.goto_next()<cr>')
+    bufmap('n', '<leader>k', '<cmd>lua vim.lsp.buf.hover()<cr>', 'Show hover tooltip')
+    bufmap('n', 'gd', '<cmd>lua vim.lsp.buf.definition()<cr>', 'Go to definition')
+    bufmap('n', 'gD', '<cmd>lua vim.lsp.buf.declaration()<cr>', 'Go to declaration')
+    bufmap('n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<cr>', 'Go to implementation')
+    bufmap('n', 'go', '<cmd>lua vim.lsp.buf.type_definition()<cr>', 'Go to type definition')
+    bufmap('n', 'gr', '<cmd>lua vim.lsp.buf.references()<cr>', 'Find references')
+    bufmap('n', 'gs', '<cmd>lua vim.lsp.buf.signature_help()<cr>', 'Signature help')
+    bufmap('n', '<F2>', '<cmd>lua vim.lsp.buf.rename()<cr>', 'Rename symbol')
+    bufmap({'n', 'x'}, '<F3>', '<cmd>lua vim.lsp.buf.format({async = true})<cr>', 'Format text')
+    bufmap('n', '<F4>', '<cmd>lua vim.lsp.buf.code_action()<cr>', 'Code action')
+    bufmap('n', 'gl', '<cmd>lua vim.diagnostic.open_float()<cr>', 'Open diagnostic float')
+    bufmap('n', '[d', '<cmd>lua vim.diagnostic.goto_prev()<cr>', 'Goto prev')
+    bufmap('n', ']d', '<cmd>lua vim.diagnostic.goto_next()<cr>', 'Goto next')
   end
 })
 
