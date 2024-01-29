@@ -1,3 +1,6 @@
-require("tray.remap")
+require("tray.core")
 require("tray.lazy")
 require("tray.set")
+require("tray.remap")
+require("tray.edittext")
+require("tray.highlightyank")
