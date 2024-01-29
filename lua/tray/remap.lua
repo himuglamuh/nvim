@@ -43,6 +43,13 @@ vim.keymap.set("n", "<leader>[", function()
     vim.api.nvim_feedkeys("zz", "n", false)
 end, {desc="Illuminate: Goto prev reference"})
 
+-- copilot
+vim.keymap.set('i', '<C-J>', 'copilot#Accept("\\<CR>")', {
+    expr = true,
+    replace_keycodes = false
+})
+vim.g.copilot_no_tab_map = true
+
 -- harpoon
 vim.keymap.set("n", "<leader>ho", function()
     harpoon_ui.toggle_quick_menu()

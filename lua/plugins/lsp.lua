@@ -39,8 +39,8 @@ return {
                 },
                 mapping = cmp.mapping.preset.insert({
                     ['<C-Space>'] = cmp.mapping.complete(),
-                    ['<C-u>'] = cmp.mapping.scroll_docs(-4),
-                    ['<C-d>'] = cmp.mapping.scroll_docs(4),
+                    ['<C-k>'] = cmp.mapping.scroll_docs(-4),
+                    ['<C-j>'] = cmp.mapping.scroll_docs(4),
                 }),
                 snippet = {
                     expand = function(args)
