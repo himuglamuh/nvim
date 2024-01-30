@@ -44,7 +44,7 @@ vim.keymap.set("n", "<leader>[", function()
 end, {desc="Illuminate: Goto prev reference"})
 
 -- copilot
-vim.keymap.set('i', '<C-J>', 'copilot#Accept("\\<CR>")', {
+vim.keymap.set('i', '<C-j>', 'copilot#Accept("\\<CR>")', {
     expr = true,
     replace_keycodes = false
 })
