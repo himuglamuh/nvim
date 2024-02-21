@@ -36,13 +36,11 @@ return {
                     lualine_a = {
                         { 'mode', left_padding = 2, right_padding = 2 },
                     },
-                    lualine_b = { 'filename', 'branch'},
-                    lualine_c = { 'buffers', harpoon_component},
-                    lualine_x = { 'diagnostics', 'diff', 'searchcount', 'selectioncount'},
-                    lualine_y = { 'filetype', 'progress' },
-                    lualine_z = {
-                        { 'location', left_padding = 2 },
-                    },
+                    lualine_b = { 'filename', 'branch' },
+                    lualine_c = { 'buffers', harpoon_component },
+                    lualine_x = { 'searchcount', 'selectioncount' },
+                    lualine_y = { 'filetype', 'diagnostics', 'diff' },
+                    lualine_z = { 'location' },
                 },
             })
         end,
