@@ -26,6 +26,16 @@ end)
 vim.keymap.set("n", "L", "$<left>")
 vim.keymap.set("n", "H", "^")
 
+-- buffer and pane navigation
+vim.keymap.set("n", "<leader>a", ":bprevious<CR>", {desc="Previous buffer"})
+vim.keymap.set("n", "<leader>g", ":bnext<CR>", {desc="Next buffer"})
+vim.keymap.set("n", "<leader>v", ":vsplit<CR>", {desc="Vertical split buffer"})
+vim.keymap.set("n", "<leader>s", ":split<CR>", {desc="Horizontal split buffer"})
+vim.keymap.set("n", "<leader>H", ":wincmd h<CR>", {desc="Move to left pane"})
+vim.keymap.set("n", "<leader>J", ":wincmd j<CR>", {desc="Move to below pane"})
+vim.keymap.set("n", "<leader>K", ":wincmd k<CR>", {desc="Move to above pane"})
+vim.keymap.set("n", "<leader>L", ":wincmd l<CR>", {desc="Move to right pane"})
+
 -- redo
 vim.keymap.set("n", "U", "<C-r>")
 

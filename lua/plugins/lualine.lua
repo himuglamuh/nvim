@@ -30,14 +30,14 @@ return {
                     theme = "dracula",
 					globalstatus = true,
 					component_separators = { left = "", right = "" },
-					section_separators = { left = "█", right = "█" },
+					section_separators = { right = "", left = "" },
                 },
                 sections = {
                     lualine_a = {
                         { 'mode', left_padding = 2, right_padding = 2 },
                     },
                     lualine_b = { 'filename', 'branch'},
-                    lualine_c = { harpoon_component },
+                    lualine_c = { 'buffers', harpoon_component},
                     lualine_x = { 'diagnostics', 'diff', 'searchcount', 'selectioncount'},
                     lualine_y = { 'filetype', 'progress' },
                     lualine_z = {
