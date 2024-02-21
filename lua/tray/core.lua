@@ -9,5 +9,5 @@ vim.keymap.set("n", "K", ":move -2<CR>", {desc="Move line up"})
 vim.keymap.set("n", "J", ":move +1<CR>", {desc="Move line down"})
 
 -- system clipboard
-vim.keymap.set({"n", "v"}, "<leader>p", [["+p]], {desc="Paste from clipboard"})
+vim.keymap.set({"n", "v"}, "<leader>p", '"+p:%s/\\r/<CR>', {silent = true, desc="Paste from clipboard"})
 vim.keymap.set({"n", "v"}, "<leader>y", [["+y]], {desc="Copy to clipboard"})
