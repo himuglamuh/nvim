@@ -1,6 +1,5 @@
 local harpoon_ui = require("harpoon.ui")
 local harpoon_mark = require("harpoon.mark")
-local illuminate = require("illuminate")
 
 -- center the buffer
 vim.keymap.set("n", "<C-u>", "<C-u>zz")
@@ -40,23 +39,13 @@ vim.keymap.set("n", "<leader>J", ":wincmd j<CR>", {desc="Move to below pane"})
 vim.keymap.set("n", "<leader>K", ":wincmd k<CR>", {desc="Move to above pane"})
 vim.keymap.set("n", "<leader>L", ":wincmd l<CR>", {desc="Move to right pane"})
 vim.keymap.set("n", "<leader>b", ":buf ", {desc="Move to right pane"})
+vim.keymap.set("n", "<leader>d", ":bd<CR>", {desc="Close buffer"})
 
 -- redo
 vim.keymap.set("n", "U", "<C-r>")
 
 -- symbol outline
 vim.keymap.set("n", "<leader>so", ":SymbolsOutline<cr>", {desc="SymbolsOutline"})
-
--- illuminate
-vim.keymap.set("n", "<leader>]", function()
-    illuminate.goto_next_reference()
-    vim.api.nvim_feedkeys("zz", "n", false)
-end, {desc="Illuminate: Goto next reference"})
-
-vim.keymap.set("n", "<leader>[", function()
-    illuminate.goto_prev_reference()
-    vim.api.nvim_feedkeys("zz", "n", false)
-end, {desc="Illuminate: Goto prev reference"})
 
 -- copilot
 vim.keymap.set('i', '<C-j>', 'copilot#Accept("\\<CR>")', {

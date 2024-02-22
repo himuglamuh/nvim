@@ -7,18 +7,17 @@ return {
             "hrsh7th/nvim-cmp",
             "hrsh7th/cmp-nvim-lsp",
             "L3MON4D3/LuaSnip",
-			"hrsh7th/cmp-buffer",
-			"hrsh7th/cmp-path",
-			"saadparwaiz1/cmp_luasnip",
-			"rafamadriz/friendly-snippets",
-			"onsails/lspkind.nvim",
-			"windwp/nvim-ts-autotag",
-			"windwp/nvim-autopairs",
+            "hrsh7th/cmp-buffer",
+            "hrsh7th/cmp-path",
+            "saadparwaiz1/cmp_luasnip",
+            "rafamadriz/friendly-snippets",
+            "onsails/lspkind.nvim",
+            "windwp/nvim-ts-autotag",
+            "windwp/nvim-autopairs",
         },
         config = function()
             require("mason").setup()
             require("mason-lspconfig").setup()
-
 
             local cmp = require('cmp')
             local luasnip = require('luasnip')
@@ -27,40 +26,37 @@ return {
             require("nvim-autopairs").setup()
 
             cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done())
-            
+
             require("luasnip.loaders.from_vscode").lazy_load()
 
             cmp.setup({
                 sources = {
-                    {name = 'nvim_lsp'},
-                    {name = 'buffer', max_item_count = 5},
-                    {name = 'path', max_item_count = 3},
-                    {name = 'luasnip', max_item_count = 3},
+                    { name = 'nvim_lsp' },
+                    { name = 'buffer',  max_item_count = 5 },
+                    { name = 'path',    max_item_count = 3 },
+                    { name = 'luasnip', max_item_count = 3 },
                 },
                 mapping = cmp.mapping.preset.insert {
-                      -- Select the [n]ext item
-                      ['<C-n>'] = cmp.mapping.select_next_item(),
-                      -- Select the [p]revious item
-                      ['<C-p>'] = cmp.mapping.select_prev_item(),
-                      -- Accept ([y]es) the completion.
-                      --  This will auto-import if your LSP supports it.
-                      --  This will expand snippets if the LSP sent a snippet.
-                      ['<C-y>'] = cmp.mapping.confirm { select = true },
-                      -- Manually trigger a completion from nvim-cmp
-                      ['<C-Space>'] = cmp.mapping.complete {},
-                      -- <c-l> will move you to the right of each of the expansion locations.
-                      -- <c-h> is similar, except moving you backwards.
-                      ['<C-l>'] = cmp.mapping(function()
+                    ['<C-n>'] = cmp.mapping.select_next_item(),
+                    ['<C-p>'] = cmp.mapping.select_prev_item(),
+                    --  This will auto-import if your LSP supports it.
+                    --  This will expand snippets if the LSP sent a snippet.
+                    ['<C-y>'] = cmp.mapping.confirm { select = true },
+                    -- Manually trigger a completion from nvim-cmp
+                    ['<C-Space>'] = cmp.mapping.complete {},
+                    -- <c-l> will move you to the right of each of the expansion locations.
+                    -- <c-h> is similar, except moving you backwards.
+                    ['<C-l>'] = cmp.mapping(function()
                         if luasnip.expand_or_locally_jumpable() then
-                          luasnip.expand_or_jump()
+                            luasnip.expand_or_jump()
                         end
-                      end, { 'i', 's' }),
-                      ['<C-h>'] = cmp.mapping(function()
+                    end, { 'i', 's' }),
+                    ['<C-h>'] = cmp.mapping(function()
                         if luasnip.locally_jumpable(-1) then
-                          luasnip.jump(-1)
+                            luasnip.jump(-1)
                         end
-                      end, { 'i', 's' }),
-                    },
+                    end, { 'i', 's' }),
+                },
                 snippet = {
                     expand = function(args)
                         luasnip.lsp_expand(args.body)
@@ -71,14 +67,14 @@ return {
                 }
             })
 
-            local lsp_cmds = vim.api.nvim_create_augroup('lsp_cmds', {clear = true})
+            local lsp_cmds = vim.api.nvim_create_augroup('lsp_cmds', { clear = true })
 
             vim.api.nvim_create_autocmd('LspAttach', {
                 group = lsp_cmds,
                 desc = 'LSP actions',
                 callback = function()
                     local bufmap = function(mode, lhs, rhs, des)
-                        vim.keymap.set(mode, lhs, rhs, {buffer = true, desc=des})
+                        vim.keymap.set(mode, lhs, rhs, { buffer = true, desc = des })
                     end
 
                     bufmap('n', '<leader>k', '<cmd>lua vim.lsp.buf.hover()<cr>', 'Show hover tooltip')
@@ -89,9 +85,10 @@ return {
                     bufmap('n', 'gr', '<cmd>lua vim.lsp.buf.references()<cr>', 'Find references')
                     bufmap('n', 'gs', '<cmd>lua vim.lsp.buf.signature_help()<cr>', 'Signature help')
                     bufmap('n', 'rn', '<cmd>lua vim.lsp.buf.rename()<cr>', 'Rename symbol')
-                    bufmap({'n', 'x'}, '<F3>', '<cmd>lua vim.lsp.buf.format({async = true})<cr>', 'Format text')
+                    bufmap({ 'n', 'x' }, '<F3>', '<cmd>lua vim.lsp.buf.format({async = true})<cr>', 'Format text')
                     bufmap('n', '<leader>ca', '<cmd>lua vim.lsp.buf.code_action()<cr>', 'Code action')
                     bufmap('n', 'gl', '<cmd>lua vim.diagnostic.open_float()<cr>', 'Open diagnostic float')
+                    bufmap('n', 'sl', '<cmd>lua vim.diagnostic.setloclist()<cr>', 'Open diagnostic float')
                     bufmap('n', '[d', '<cmd>lua vim.diagnostic.goto_prev()<cr>', 'Goto prev')
                     bufmap('n', ']d', '<cmd>lua vim.diagnostic.goto_next()<cr>', 'Goto next')
                 end
@@ -105,8 +102,7 @@ return {
                 ensure_installed = {
                     'tsserver',
                     'eslint',
-                    'html',
-                    'cssls',
+                    'gopls',
                     'omnisharp',
                     'powershell_es'
                 },
@@ -116,16 +112,6 @@ return {
                             capabilities = lsp_capabilities,
                         })
                     end,
-                    ['tsserver'] = function()
-                        lspconfig.tsserver.setup({
-                            capabilities = lsp_capabilities,
-                            settings = {
-                                completions = {
-                                    completeFunctionCalls = true
-                                }
-                            }
-                        })
-                    end
                 }
             })
         end
