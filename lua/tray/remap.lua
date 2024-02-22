@@ -22,6 +22,10 @@ vim.keymap.set("n", "S", function()
 	vim.api.nvim_feedkeys(keys, "n", false)
 end)
 
+-- retain visual selection after indenting
+vim.keymap.set("v", "<", "<gv")
+vim.keymap.set("v", ">", ">gv")
+
 -- quick nav to start and end of line
 vim.keymap.set("n", "L", "$<left>")
 vim.keymap.set("n", "H", "^")

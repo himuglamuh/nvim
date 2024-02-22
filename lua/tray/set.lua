@@ -17,5 +17,3 @@ vim.opt.scrolloff = 10
 vim.opt.signcolumn = "yes"
 vim.opt.updatetime = 50
 vim.opt.showmatch = true
-vim.api.nvim_exec("set cinkeys+=!>", true)
-vim.api.nvim_exec("set cinkeys+=!<", true)
