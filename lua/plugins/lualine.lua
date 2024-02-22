@@ -37,7 +37,7 @@ return {
                         { 'mode', left_padding = 2, right_padding = 2 },
                     },
                     lualine_b = { 'filename', 'branch' },
-                    lualine_c = { 'buffers', harpoon_component },
+                    lualine_c = { harpoon_component },
                     lualine_x = { 'searchcount', 'selectioncount' },
                     lualine_y = { 'filetype', 'diagnostics', 'diff' },
                     lualine_z = { 'location' },

@@ -35,6 +35,7 @@ vim.keymap.set("n", "<leader>H", ":wincmd h<CR>", {desc="Move to left pane"})
 vim.keymap.set("n", "<leader>J", ":wincmd j<CR>", {desc="Move to below pane"})
 vim.keymap.set("n", "<leader>K", ":wincmd k<CR>", {desc="Move to above pane"})
 vim.keymap.set("n", "<leader>L", ":wincmd l<CR>", {desc="Move to right pane"})
+vim.keymap.set("n", "<leader>b", ":buf ", {desc="Move to right pane"})
 
 -- redo
 vim.keymap.set("n", "U", "<C-r>")
