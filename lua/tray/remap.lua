@@ -40,6 +40,10 @@ vim.keymap.set("n", "<leader>K", ":wincmd k<CR>", {desc="Move to above pane"})
 vim.keymap.set("n", "<leader>L", ":wincmd l<CR>", {desc="Move to right pane"})
 vim.keymap.set("n", "<leader>b", ":buf ", {desc="Move to right pane"})
 vim.keymap.set("n", "<leader>d", ":bd<CR>", {desc="Close buffer"})
+vim.keymap.set("n", "<leader>-", "<C-w>-", {desc="Decrease pane height"})
+vim.keymap.set("n", "<leader>=", "<C-w>+", {desc="Increase pane height"})
+vim.keymap.set("n", "<leader>,", "<C-w>>", {desc="Increase pane width"})
+vim.keymap.set("n", "<leader>.", "<C-w><", {desc="Decrease pane width"})
 
 -- redo
 vim.keymap.set("n", "U", "<C-r>")
