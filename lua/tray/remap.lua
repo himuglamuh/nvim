@@ -26,8 +26,8 @@ vim.keymap.set("v", "<", "<gv")
 vim.keymap.set("v", ">", ">gv")
 
 -- quick nav to start and end of line
-vim.keymap.set("n", "L", "$<left>")
-vim.keymap.set("n", "H", "^")
+vim.keymap.set({"n", "v"}, "L", "$<left>")
+vim.keymap.set({"n", "v"}, "H", "^")
 
 -- buffer and pane navigation
 vim.keymap.set("n", "<leader>a", ":bprevious<CR>", {desc="Previous buffer"})
