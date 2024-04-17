@@ -21,3 +21,15 @@ vim.opt.smartcase = true
 vim.opt.splitright = true
 vim.opt.splitbelow = true
 vim.opt.showmatch = true
+
+function Setup_markdown()
+    vim.wo.colorcolumn = "180"
+end
+
+vim.cmd([[
+    augroup MarkdownSettings
+        autocmd!
+        autocmd FileType markdown lua Setup_markdown()
+    augroup END
+]])
+
