@@ -8,7 +8,13 @@ return {
         },
         config = function()
             local builtin = require('telescope.builtin')
-            vim.keymap.set('n', '<leader>tf', builtin.find_files, {desc="Search all files"})
+            vim.keymap.set('n', '<leader>tf', function()
+                builtin.find_files({
+                    hidden = true,
+                    no_ignore = true,
+                    file_ignore_patterns = { ".git/" }
+                })
+            end, { desc = "Search all files, including hidden ones, but ignore .git/" })
             vim.keymap.set('n', '<leader>tg', builtin.git_files, {desc="Search git files"})
             vim.keymap.set('n', '<leader>tS', function()
                 builtin.grep_string({search = vim.fn.input("grep> ")});
