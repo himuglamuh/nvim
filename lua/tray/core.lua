@@ -11,3 +11,6 @@ vim.keymap.set("n", "J", ":move +1<CR>", {desc="Move line down"})
 -- system clipboard
 vim.keymap.set({"n", "v"}, "<leader>p", '"+p:%s/\\r/<CR>', {silent = true, desc="Paste from clipboard"})
 vim.keymap.set({"n", "v"}, "<leader>y", [["+y]], {desc="Copy to clipboard"})
+
+-- stupid python garbage
+vim.g.python3_host_prog = "/usr/bin/python3"

@@ -100,9 +100,7 @@ return {
             require('mason').setup({})
             require('mason-lspconfig').setup({
                 ensure_installed = {
-                    'gopls',
-                    'omnisharp',
-                    'powershell_es'
+                    'gopls'
                 },
                 handlers = {
                     function(server)
