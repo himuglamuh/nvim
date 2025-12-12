@@ -52,11 +52,7 @@ vim.keymap.set("n", "U", "<C-r>")
 vim.keymap.set("n", "<leader>so", ":SymbolsOutline<cr>", {desc="SymbolsOutline"})
 
 -- copilot
-vim.keymap.set('i', '<C-j>', 'copilot#Accept("\\<CR>")', {
-    expr = true,
-    replace_keycodes = false
-})
-vim.g.copilot_no_tab_map = true
+vim.g.copilot_no_tab_map = false
 
 -- harpoon
 vim.keymap.set("n", "<leader>ho", function()
