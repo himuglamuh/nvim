@@ -89,3 +89,15 @@ vim.keymap.set("n", "<leader>h5", function()
     harpoon_ui.nav_file(5)
 end,
 {desc="Harpoon: File 5"})
+
+-- Normal/visual: start/end of line (non-blank / end)
+vim.keymap.set({ "n", "v" }, "<C-a>", "^", { noremap = true, silent = true })
+vim.keymap.set({ "n", "v" }, "<C-e>", "$", { noremap = true, silent = true })
+
+-- Insert: do it without leaving insert mode
+vim.keymap.set("i", "<C-a>", "<C-o>^", { noremap = true, silent = true })
+vim.keymap.set("i", "<C-e>", "<C-o>$", { noremap = true, silent = true })
+
+-- Command-line: beginning/end of command
+vim.keymap.set("c", "<C-a>", "<Home>", { noremap = true })
+vim.keymap.set("c", "<C-e>", "<End>", { noremap = true })
