@@ -16,9 +16,9 @@ vim.keymap.set("n", "#", "#zz")
 
 -- find/replace quickly
 vim.keymap.set("n", "S", function()
-	local cmd = ":%s/<C-r><C-w>/<C-r><C-w>/gI<Left><Left><Left>"
-	local keys = vim.api.nvim_replace_termcodes(cmd, true, false, true)
-	vim.api.nvim_feedkeys(keys, "n", false)
+    local cmd = ":%s/<C-r><C-w>/<C-r><C-w>/gI<Left><Left><Left>"
+    local keys = vim.api.nvim_replace_termcodes(cmd, true, false, true)
+    vim.api.nvim_feedkeys(keys, "n", false)
 end)
 
 -- retain visual selection after indenting
@@ -105,5 +105,61 @@ vim.keymap.set("c", "<C-e>", "<End>", { noremap = true })
 -- Obsidian
 vim.keymap.set("n", "<leader>of", ":Obsidian quick_switch<CR>", { desc = "Obsidian: find note" })
 vim.keymap.set("n", "<leader>os", ":Obsidian search<CR>", { desc = "Obsidian: search vault" })
-vim.keymap.set("n", "<leader>on", ":Obsidian new_from_template<CR>", { desc = "Obsidian: new note" })
+
+local function new_weekly_note()
+  local vault = vim.fn.expand("~/OneDrive/Apps/remotely-save/scratch2")
+  local current = vault .. "/current.md"
+
+  -- archive existing current.md
+  if vim.fn.filereadable(current) == 1 then
+    local id = nil
+    for line in io.lines(current) do
+      local match = line:match('^id:%s*"?([^"]+)"?%s*$')
+      if match then
+        id = match
+        break
+      end
+    end
+
+    if id then
+      id = id:gsub('^"(.*)"$', '%1')
+      local new_path = vault .. "/" .. id .. ".md"
+      os.rename(current, new_path)
+      vim.notify("Archived: " .. id .. ".md")
+    else
+      vim.notify("No id found in current.md frontmatter", vim.log.levels.ERROR)
+      return
+    end
+  end
+
+  -- prompt for the new week id
+  vim.ui.input({ prompt = "New week id: " }, function(input)
+    if not input or input == "" then
+      vim.notify("Cancelled", vim.log.levels.WARN)
+      return
+    end
+
+    -- write current.md directly
+    local date = os.date("%B %-d")
+    local f = io.open(current, "w")
+    if f then
+      f:write("---\n")
+      f:write('id: "' .. input .. '"\n')
+      f:write("aliases: []\n")
+      f:write("tags:\n")
+      f:write("  - work-notes\n")
+      f:write("  - journal\n")
+      f:write("---\n")
+      f:write("# " .. date .. "\n")
+      f:close()
+      vim.cmd("e " .. current)
+      vim.notify("Created: current.md for " .. input)
+    else
+      vim.notify("Failed to create current.md", vim.log.levels.ERROR)
+    end
+  end)
+end
+
+vim.keymap.set("n", "<leader>wn", new_weekly_note, { desc = "New weekly note" })
+vim.keymap.set("n", "<leader>on", new_weekly_note, { desc = "New weekly note" })
 vim.keymap.set("n", "<leader>ff", ":Obsidian follow_link<CR>", { desc = "Obsidian: follow link" })

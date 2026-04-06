@@ -32,8 +32,17 @@ return {
     end,
     frontmatter = {
       func = function(note)
+        if tostring(note.path):match("current%.md$") and vim.g.obsidian_new_week_id then
+          local id = vim.g.obsidian_new_week_id
+          vim.g.obsidian_new_week_id = nil
+          return {
+            id = id,
+            aliases = {},
+            tags = { "work-notes", "journal" },
+          }
+        end
         return note.metadata
       end,
-    }
+    },
   },
 }
