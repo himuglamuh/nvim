@@ -101,3 +101,9 @@ vim.keymap.set("i", "<C-e>", "<C-o>$", { noremap = true, silent = true })
 -- Command-line: beginning/end of command
 vim.keymap.set("c", "<C-a>", "<Home>", { noremap = true })
 vim.keymap.set("c", "<C-e>", "<End>", { noremap = true })
+
+-- Obsidian
+vim.keymap.set("n", "<leader>of", ":Obsidian quick_switch<CR>", { desc = "Obsidian: find note" })
+vim.keymap.set("n", "<leader>os", ":Obsidian search<CR>", { desc = "Obsidian: search vault" })
+vim.keymap.set("n", "<leader>on", ":Obsidian new_from_template<CR>", { desc = "Obsidian: new note" })
+vim.keymap.set("n", "<leader>ff", ":Obsidian follow_link<CR>", { desc = "Obsidian: follow link" })

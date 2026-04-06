@@ -6,7 +6,7 @@ return {
                 ensure_installed = {"c_sharp", "javascript", "typescript", "c", "lua", "vim", "vimdoc", "query", "bash", "dockerfile", "go", "html", "json", "kusto", "markdown_inline", "python", "regex", "yaml" },
                 sync_install = false,
                 auto_install = true,
-                ignore_install = { "javascript" },
+                -- ignore_install = { "javascript" },
                 highlight = {
                     enable = true,
                     disable = {},
