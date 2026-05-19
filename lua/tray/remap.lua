@@ -108,7 +108,7 @@ vim.keymap.set("n", "<leader>os", ":Obsidian search<CR>", { desc = "Obsidian: se
 
 local function new_weekly_note()
   local vault = vim.fn.expand("~/OneDrive/Apps/remotely-save/scratch2")
-  local current = vault .. "/current.md"
+  local current = vault .. "/punch_list/current.md"
 
   -- archive existing current.md
   if vim.fn.filereadable(current) == 1 then
@@ -123,7 +123,7 @@ local function new_weekly_note()
 
     if id then
       id = id:gsub('^"(.*)"$', '%1')
-      local new_path = vault .. "/" .. id .. ".md"
+      local new_path = vault .. "/punch_list/" .. id .. ".md"
       os.rename(current, new_path)
       vim.notify("Archived: " .. id .. ".md")
     else
