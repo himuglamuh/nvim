@@ -12,7 +12,6 @@ return {
             "saadparwaiz1/cmp_luasnip",
             "rafamadriz/friendly-snippets",
             "onsails/lspkind.nvim",
-            "windwp/nvim-ts-autotag",
             "windwp/nvim-autopairs",
         },
         config = function()

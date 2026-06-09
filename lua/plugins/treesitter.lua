@@ -1,18 +1,5 @@
-return {
-    {
-        'nvim-treesitter/nvim-treesitter',
-        config = function()
-            require'nvim-treesitter.configs'.setup {
-                ensure_installed = {"c_sharp", "javascript", "typescript", "c", "lua", "vim", "vimdoc", "query", "bash", "dockerfile", "go", "html", "json", "kusto", "markdown_inline", "python", "regex", "yaml" },
-                sync_install = false,
-                auto_install = true,
-                -- ignore_install = { "javascript" },
-                highlight = {
-                    enable = true,
-                    disable = {},
-                    additional_vim_regex_highlighting = false,
-                },
-            }
-        end
-    }
-}
+-- nvim-treesitter was archived 2026-04-03.
+-- Replaced with Neovim's built-in tree-sitter (see lua/tray/treesitter.lua).
+-- Parsers live in ~/.local/share/nvim/site/parser/
+-- Queries live in ~/.local/share/nvim/site/queries/
+return {}
